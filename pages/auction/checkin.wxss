@@ -1,0 +1,26 @@
+
+#auction-detail {
+  background: #f0f0f0;
+  min-height: 100%;
+  padding-bottom: 100rpx;
+}
+
+.auction-banner {
+  height: 300rpx;
+}
+
+.auction-banner image {
+  width: 100%;
+}
+
+.auction-detail-1 {
+  padding: 25rpx 50rpx 35rpx 50rpx;
+  margin-top: 10rpx;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.auction-detail-1 .auction-number-title {
+  padding-right: 20rpx;
+}

@@ -1,0 +1,12 @@
+<view class='member_subscription'>
+  <view class='member_subscription_m' wx:for="{{subscribeList}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='subscribeDetail'>
+    <view class='m_s_detal'>
+      <view>房产{{item.cycle === 1 ? '周报' : '半月报'}}</view>
+      <view class='m_s_c'>{{item.adress}} | 价格：{{item.price}} | 状态：{{item.status}}</view>
+    </view>
+    <view class='m_s_cancel' catchtap='cancelMemberSubscription' data-id="{{item.id}}">取消订阅</view>
+  </view>
+  <view class='add_m_s' bindtap='addMemberSubscription'>
+    <view class='add_m_s_b'>新增订阅</view>
+  </view>
+</view>

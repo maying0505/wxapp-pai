@@ -1,0 +1,49 @@
+<template name="statusFilter">
+  <scroll-view
+    scroll-x
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    bindscroll="scroll"
+    scroll-into-view="cur{{curScrollItem}}"
+    class='scroll-box'
+  >
+    <view id="cur{{index}}" class="scroll-view-item {{curScrollItem === index ? 'scroll-view-item-active' : ''}}" wx:for="{{scrolls}}" wx:key="{{index}}" bindtap='scrollItemTap' data-status="{{item.status}}" data-id="{{index}}"><view class="bot-line"></view><view class="status-text">{{item.name}}</view></view>
+    <view class="scroll-margin-right scroll-view-item"></view>
+  </scroll-view>
+  <view class='sort-box {{curScrollItem == -1?"":"sort-box1"}} {{sortStr?"item-bar-active":""}}'>
+    <view class='divider'></view>
+    <!-- <text>{{sortStr?sortStr:'排序'}}</text> -->
+    <picker bindchange="bindPickerSort" value="{{sortB}}" range="{{sortList}}" range-key="text">
+      <view class="picker">
+        {{sortStr ? sortStr : '排序'}}
+      </view>
+    </picker>
+    <image src='../../image/paixu(lv).png' class="status-filter-icon" wx:if="{{sortStr}}"></image>
+    <image src='../../image/paixu(hui).png' class="status-filter-icon" wx:else></image>
+  </view>
+  <!-- <view class="popup" wx:if="{{isPopupShow}}" catchtap="maskClick">
+      <view class="popup-mask"></view>
+      <view class="popup-box slide-down">
+        <view class="drop-menu-list">
+          <view class="row-list">
+            <view class="row-item {{params.sort==0||params.sort==-1?'row-item-active':''}}" bindtap="sortItemClick" data-key="-1">
+              <view class="txt">默认排序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==1?'row-item-active':''}}" bindtap="sortItemClick" data-key="1">
+              <view class="txt">价格升序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==2?'row-item-active':''}}" bindtap="sortItemClick" data-key="2">
+              <view class="txt">价格降序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==3?'row-item-active':''}}" bindtap="sortItemClick" data-key="3">
+              <view class="txt">最新发布</view>
+              <view class="icon"></view>
+            </view>
+          </view>
+        </view>
+      </view> -->
+  <!-- </view> -->
+</template>

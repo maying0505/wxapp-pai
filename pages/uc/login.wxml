@@ -1,0 +1,7 @@
+<view id="uc-login">
+  <image class='pai-logo' src="../../image/uc-login.png"></image>
+  <view class='information'>
+    为了能够为您提供优秀的服务，能拍小程序希望获取您公开的信息（昵称，头像等）
+  </view>
+  <button open-type='getUserInfo' class="userInfoBtn" bindtap="getUserInfo">点击授权</button>
+</view>

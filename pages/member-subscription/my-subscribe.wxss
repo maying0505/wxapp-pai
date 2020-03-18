@@ -1,0 +1,12 @@
+@import "../auction/list.wxss";
+@import "index.wxss";
+.subscribeTime{
+  text-align: center;
+  color: #B5B5B5;
+  font-size: 24rpx;
+}
+.auction-list{
+  margin-top: 0;
+  margin: 0 10rpx;
+  padding: 0 10rpx;
+}

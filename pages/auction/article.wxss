@@ -1,0 +1,26 @@
+@import "../../utils/html-view/index.wxss";
+
+#auction-article{
+  background: #f0f0f0;
+  padding: 20rpx;
+  height: 100%;
+}
+
+.content {
+  background: #fff;
+  padding:20rpx;
+  font-size:28rpx;
+  line-height:1.5;
+  height:100%;
+  display: block
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.3s;
+}
+
+.slide-enter, .slide-leave-to {
+  transform: translate3d(100%, 0, 0);
+}
+.wxParse-tr{display: flex;flex-direction: row}
+.wxParse-td{flex:1;border:1px solid #ccc;text-align: center}

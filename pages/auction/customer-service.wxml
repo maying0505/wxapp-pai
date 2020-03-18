@@ -1,0 +1,29 @@
+<view>
+  <view class="main">
+    <view class="module_box" wx:for="{{listInfo}}" data-index="{{index}}" wx:key="{{index}}">
+        <view class="ask">
+          <image class="wen" src='../../image/wen.png'></image>
+          <text>{{item.question}}</text>
+        </view>
+        <view class="answer">
+          <image class="da" src='../../image/da.png'></image>
+          <text>{{item.answer ? item.answer : '暂无回答'}}</text>
+        </view>
+        <view class="time">{{item.creatTime}}</view>
+    </view>
+  </view>
+  <view class="mask" bindtap="inputBlur" wx:if="{{ifFocus}}"></view>
+
+  <view class="foot {{ifFocus ? 'foot_focus':'' }}">
+    <form bindsubmit="bookSubmit" report-submit='true' bindreset="formReset">
+      <view class='form-box'>
+        <view class='input-item'>
+          <input name="question" value='{{inputValue}}' focus="{{ifFocus}}" bindfocus="inputFocus" type="text" placeholder=""/>
+        </view>
+        <view class="wen_btn">
+          <button form-type='submit'>提问</button>
+        </view> 
+      </view>
+    </form>
+  </view>
+</view>

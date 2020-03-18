@@ -1,0 +1,272 @@
+.drop-menu {
+  color: #666;
+}
+
+.drop-menu-active {
+  position: fixed;
+  z-index: 103;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateZ(0);
+  transition: all ease-in 0.3s;
+}
+
+.drop-menu-bar {
+  display: flex;
+  height: 80rpx;
+  background: #fff;
+  position: relative;
+}
+
+.drop-menu-active .drop-menu-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 102;
+  width: 100%;
+}
+
+.drop-menu-bar:before {
+  content: '';
+  position: absolute;
+  background-color: #d9d9d9;
+  transform-origin: 100% 50%;
+  transform: scaleY(0.5) translateY(100%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+.item-bar {
+  display: flex;
+  flex: 1;
+  margin: 2% 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #323232;
+}
+
+.item-bar span {
+  position: relative;
+  width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+
+.item-bar span .active
+        span:after {
+  transform: rotate(180deg);
+}
+
+.item-bar-active {
+  color: #1abd98;
+}
+
+.item-bar span .selected {
+  color: #1abd98;
+}
+
+.item-bar span .disabled {
+  opacity: 0.8;
+}
+
+.item-bar span .active {
+  color: #1abd98;
+}
+
+.popup {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  transform: translateZ(0);
+  z-index: 100;
+}
+
+.popup-mask {
+  top: 0;
+  right: 0;
+  bottom: -1rem;
+  left: 0;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-box {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 102;
+}
+
+.drop-menu-list {
+  max-height: 1000rpx;
+  overflow: scroll;
+  padding-top: 80rpx;
+  box-shadow: 0 0 5px #cdcdcd;
+  transition: height ease-in 0.3s;
+}
+
+.row-list, .distinct-list,.custom-list {
+  z-index: 1000;
+  background: #fff;
+}
+
+.row-list .row-item {
+  display: flex;
+  padding: 20rpx;
+  font-size: 24rpx;
+  position: relative;
+}
+.row-item-active .txt,.row-item-active .icon {color:#1abd98}
+
+.row-list .row-item:before {
+  content: '';
+  position: absolute;
+  z-index: 10005;
+  background-color: #d9d9d9;
+  transform-origin: 100% 50%;
+  transform: scaleY(0.5) translateY(100%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.row-list .row-item  .txt {
+  flex: 1;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.row-list .row-item  .icon {
+  width: 24rpx;
+  height: 24rpx;
+  color: #1abd98;
+}
+
+.row-list .row-item .row-item-choosen {
+  color: #1abd98;
+}
+
+.distinct-list {
+  display: flex;
+  flex-direction: row;
+  height: 500rpx;
+  overflow: scroll;
+}
+
+.province-list, .city-list, .area-list {
+  flex: 1;
+  border-left: 1px solid #ccc;
+  height: 500rpx;
+  overflow: scroll;
+}
+
+.province-list .item, .city-list .item, .area-list .item {
+  padding: 20rpx;
+  position: relative;
+  color: #666;
+  font-size:30rpx;
+}
+
+.province-list .active, .city-list .active, .area-list .active {
+  color: #40b573;
+}
+
+.province-list .item:after, .city-list .item:after, .area-list .item:after,.confirm-cancel:after {
+  content: '';
+  position: absolute;
+  z-index: 10005;
+  background-color: #d9d9d9;
+  transform-origin: 100% 50%;
+  transform: scaleY(0.5) translateY(100%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+
+.confirm-cancel {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 0 5px #cdcdcd
+}
+
+.confirm, .cancel {
+  flex: 1;
+  color: #fff;
+  font-size: 30rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 20rpx 0;
+}
+
+.confirm {
+  background: #1abd98;
+}
+
+.cancel {
+  background: #fff;
+  color: #666;
+}
+
+.custom-list {
+  background: #fff;
+  text-align: center;
+}
+
+.status-list,.time-list {
+  padding: 20rpx 45rpx;
+}
+
+.status-list{
+  border-bottom: 1px solid #ccc;
+}
+
+
+.status-text,.time-text {
+  color: #333;
+  font-size: 30rpx;
+  text-align: left;
+  margin-bottom: 10rpx;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  width: 120rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  color: #666;
+  border: 1rpx solid #666;
+  border-radius: 3px;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag-list .active{
+  color: #40b573;
+  border: 1rpx solid #40b573;
+}
+
+

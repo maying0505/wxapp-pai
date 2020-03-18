@@ -1,0 +1,67 @@
+<view id="uc">
+  <view class='main'>
+    <view class='header_login' bindtap="ifLoginShow">
+       <view class='avatar'>
+        <image wx:if="{{user}}" src="{{user.headimgurl}}"></image>
+        <image wx:else src="../../image/no-login.png" class='no_login'></image>
+      </view>
+      <view class="nickname" wx:if="{{user}}">{{user.realname?user.realname:user.nickname?user.nickname:'拍拍你'}}</view>
+      <view class="nickname" wx:else>点击登录用户
+        <!-- <button open-type='getUserInfo' class="userInfoBtn" bindtap="ifLoginShow"></button> -->
+      </view>
+    </view>
+   
+
+    <view class="uc-panel">
+      <view class="uc-panel-in">
+        <navigator class="row" url='../uc/auction' hover-class='hover-class'>
+          <image class='row-icon' src='../../image/jinmai@2x.png'></image>
+          <view class="row-content">
+            <view class="row-text">我的竞买</view>
+            <i class="icon-right iconfont"></i>
+          </view>
+        </navigator>
+        <navigator class="row" url='../member-subscription/index' hover-class='hover-class'>
+          <image class='row-icon' src='../../image/dingyue@2x.png'></image>
+          <view class="row-content">
+            <view class="row-text">我的订阅</view>
+            <i class="icon-right iconfont"></i>
+          </view>
+        </navigator>
+        <navigator class="row" url="../notice/list?userId={{user.id}}" hover-class='hover-class'>
+          <image class='row-icon' src='../../image/xiaoxi@2x.png'></image>
+          <view class="row-content">
+            <view class="row-text">消息通知</view>
+            <i class="icon-right iconfont"></i>
+          </view>
+        </navigator>
+        <view class="row row-last" hover-class='hover-class'>
+          <image class='row-icon' src='../../image/lianxikefu@2x.png'></image>
+          <view class="row-content" bindtap='call' data-phone="4000159899">
+            <view class="row-text">联系客服</view>
+            <view class="kefu-phone">400-015-9899</view>
+            <i class="icon-right iconfont"></i>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='mask' wx:if="{{ifLogin}}">
+    </view>
+    <view class='if_login' wx:if="{{ifLogin}}">
+        <view>
+          您还未登录
+        </view>
+        <view class='gray'>
+          请先登录再进行操作
+        </view>
+        <image src='../../image/denglu.png'></image>
+        <view class='if_login_b'>
+          <view class='if_login_b1' bindtap='ifLogin'>暂不登录</view>
+          <button open-type='getUserInfo' class="if_login_b2 userInfoBtn" bindgetuserinfo='loginDo'>立即登录</button>
+        </view>
+      </view>
+
+    <!-- <div class="logout-btn" bindtap="logout">退出登录</div> -->
+  </view>
+
+</view>

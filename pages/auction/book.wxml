@@ -1,0 +1,54 @@
+  <view class='dialog-mask' catchtouchmove='true' wx:if="{{dialog}}">
+
+    <view class='dialog  {{dialog?"fade-in":"fade-out"}}'>
+      <view class='dialog-header'>
+        <image src="../../image/yuyue@2x.png"></image>
+        <view>预约看样</view>
+      </view>
+      <form bindsubmit="bookSubmit" report-submit='true'>
+        <view class='dialog-body' >
+          <view class='input-item'>
+            <view class='select' catchtap='showOptions'>
+              <view class='val'>{{params.time?'':'看样日期'}}</view>
+              <!-- <view class='options' wx:if="{{options}}">
+                <view class='option' wx:for="{{times}}" data-timeid="{{item.id}}" data-time="{{item.inquestDate}} 至 {{item.endDate}}" catchtap='optionClick'>{{item.inquestDate}} 至 {{item.endDate}}</view>
+              </view> -->
+              <picker class="item" bindchange="bindPickerChange" value="{{index}}" range="{{times}}" range-key="time">
+							<view class="look-time">{{times[index].time}}</view>
+              <image src="../../image/xiala@2x.png"></image>
+						</picker>
+            </view>
+
+
+
+
+          </view>
+          <view class='input-item'>
+            <input name="name" placeholder="您的姓名" value="{{params.name}}" />
+          </view>
+          <view class='input-item'>
+            <input name="mobile" placeholder="手机号码" value="{{params.mobile}}" bindinput='inputMobile' />
+          </view>
+
+
+          <view class='input-item'>
+            <input name="smcode" placeholder="短信验证码" value="{{params.smcode}}" />
+            <view class="sm-code-btn" bindtap="getCode">{{smcodebtnTxt}}</view>
+          </view>
+
+          <view class='input-item'>
+            <radio catchtap="bookNoticeChecked" class="input-radio" checked="{{ifReadBook}}" color="#3EB575" style="transform:scale(0.5)">
+            </radio>
+            <span class="see-rule" catchtap="seeRule">我已阅读并接受《看样告知书》</span>
+          </view>
+
+        </view>
+        <view class='dialog-footer'>
+          <button form-type='submit'>马上预约</button>
+        </view>
+      </form>
+      <view class="dialog-close" catchtap='closeDialog'>
+        <image class="close" src='../../image/close.png'></image>
+      </view>
+    </view>
+  </view>

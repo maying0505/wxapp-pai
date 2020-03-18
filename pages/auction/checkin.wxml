@@ -1,0 +1,12 @@
+<view id="auction-detail" wx:if="{{auctionDetail}}">
+  <view>
+    <view class="auction-banner">
+      <image src='{{prefix+auctionDetail.cover}}' mode='aspectFill'></image>
+    </view>
+    <view class="auction-detail-1">
+      <view class="auction-number-title">
+        <span class="title">{{auctionDetail?auctionDetail.name:'--'}}</span>
+      </view>
+    </view>
+  </view>
+</view>

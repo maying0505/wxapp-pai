@@ -1,0 +1,192 @@
+<import src="../../template/drop-menu.wxml" />
+<import src="../../template/drop-menu1.wxml" />
+<import src="../../template/status-filter.wxml" />
+<view id="index" wx:if="{{ifUpgrade}}">
+  <view class="search-bar">
+    <view class='area_filter' wx:if="{{!ifSearch}}">
+      <picker  class="address-box" mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
+				<view class="address-input">{{multiArray[1][multiIndex[1]].name ? multiArray[1][multiIndex[1]].name : '所在地'}} <image src="../../image/xiala@2x.png"></image></view>
+        
+			</picker>
+      <!-- <template is="dropMenu1" data="{{provinces,cities,areas,isPopupShow1,province,city,area,sortStr,typeStr,distinctStr,sort,type,params,toViewP,toViewA,toViewC}}"></template> -->
+    </view>
+    <!-- 下拉框 -->
+    <view class='list-msg2' wx:if="{{ifSearch}}">
+        <!-- <text>{{tihuoWay}}</text> -->
+        <picker bindchange="bindPickerSearchType" value="{{searchTypeIndex}}" range="{{searchTypeList}}" range-key="text"> 
+          <view class="picker">
+            {{tihuoWay}}
+          </view>
+        </picker>
+        <image src='../../image/xiala@2x.png'></image>
+    </view>
+    <!-- 下拉框 -->
+    <view class="search">
+      <i class="iconfont icon-search"></i>
+      <!-- <input placeholder='请输入标的号或者标的名称' placeholder-class="search-input-placeholder" bindinput='searchInput' /> -->
+      <input placeholder='请输入标的编号名称或法院' name="search" type='text' value='{{searchValue}}' confirm-type="search" bindconfirm="bindconfirm"  bindfocus='bindfocus' bindinput='searchInput' disabled="{{searchDisabled}}"></input>
+      <icon type="clear" size="12" wx:if="{{ifSearchContent}}" bindtap='searchValueCancel'/>
+    </view>
+    <view class="search_cancel" wx:if="{{ifSearch}}" bindtap='searchCancel'>取消</view>
+    <!-- 地图找房 -->
+    <view class='map-search' wx:if="{{!ifSearch}}" bindtap='mapFindRoom'>
+      <image class="map-icon" src='../../image/dituzhaofang@2x.png'></image>
+      <text>地图找房</text>
+    </view>
+  </view>
+
+  <!-- <view class="notice-bar" catchtap='totest'> <i class="iconfont icon-notice"></i> 通知：您有一个预约即将到时。。</view> -->
+
+<!-- banner -->
+  <swiper wx:if="{{!ifSearch}}" class='swiper-box' indicator-dots="{{indicatorDots}}" lazy-load="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#02C3AF" indicator-color="#ffffff">
+      <block wx:for="{{ bannerUrls }}" wx:key="index">
+          <swiper-item>
+              <view>
+                  <image class="slide-image" src="{{ item.url }}" mode='widthFix'></image>
+              </view>
+          </swiper-item>
+      </block>
+  </swiper>
+
+  <view class="nav-bar" wx:if="{{!ifSearch}}">
+    <view class="nav-item" data-type='0' bindtap='navClick'>
+      <view class='circle'>
+         <image src='../../image/fangchan.png' class="qita-icon"></image>
+      </view>
+      房产
+    </view>
+    <view class="nav-item" data-type='2' bindtap='navClick'>
+      <view class='circle'>
+         <image src='../../image/tudi.png' class="qita-icon"></image>
+      </view>
+      土地
+    </view>
+    <view class="nav-item" data-type='1' bindtap='navClick'>
+      <view class='circle'>
+         <image src='../../image/jidongche.png' class="qita-icon"></image>
+      </view>
+      机动车
+    </view>
+    <view class="nav-item" data-type='3' bindtap='navClick'>
+      <view class='circle'>
+         <image src='../../image/qita.png' class="qita-icon"></image>
+      </view>
+      其他
+    </view>
+  </view>
+
+  <!-- <view class="progress" bindtap="auctionProcess"  wx:if="{{!ifSearch}}">
+    <view class="point-tag">
+      <view>参与</view>
+      <view>流程</view>
+    </view>
+    <view class="progress-point">
+      <image src='../../image/chayue.png' class="progress_icon"></image>
+      <h3>查阅标物</h3>
+      <image src='../../image/arrow.png' class="arrow_icon"></image>
+    </view>
+    <view class="progress-point">
+      <image src='../../image/yuyue.png' class="progress_icon"></image>
+      <h3>预约看样</h3>
+      <image src='../../image/arrow.png' class="arrow_icon"></image>
+    </view>
+    <view class="progress-point">
+      <image src='../../image/sifapaimai.png' class="progress_icon"></image>
+      <h3>司法拍卖</h3>
+      <image src='../../image/arrow.png' class="arrow_icon"></image>
+    </view>
+    <view class="progress-point">
+      <image src='../../image/zhongpai.png' class="progress_icon"></image>
+      <h3>中拍交易</h3>
+    </view>
+  </view> -->
+
+
+  <!-- <view class="filter">
+    <template is="dropMenu" data="{{activeMenuIndex,provinces,cities,areas,isPopupShow,province,city,area,sortStr,typeStr,distinctStr,sort,type,params}}"></template>
+  </view> -->
+  <view class="filter" wx:if="{{statusFilterShow}}">
+    <template is="statusFilter" data="{{scrolls,curScrollItem,isPopupShow,params,sortStr,sortB,sortList}}"></template>
+  </view>
+
+
+  <view class="auction-list">
+    <view class="auction-item" bindtap='detail' wx:for="{{ifSearch ? searchList: auctionList}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <view class="auction-image">
+        <image src="{{item.cover?prefix:''}}{{item.cover?item.cover:'../../image/default-cover.png'}}" lazy-load="true" mode="aspectFit" binderror='imgLoadError' />
+        <view class="auction-status auction-status-{{item.status}}" wx:if="{{item.statusStr}}">
+
+
+          {{item.statusStr}}
+
+
+        </view>
+      </view>
+      <view class="auction-info">
+        <view class="auction-title">{{item.name?item.name:'--'}}</view>
+        <view class="auction-amount">
+          <view class="txt"wx:if="{{item.status==13}}">
+            <br/>成交价
+          </view>
+          <view class="amount"wx:if="{{item.status==13}}">
+            {{item.finalPrice?item.finalPrice: '--'}}
+          </view>
+          <view class="txt" wx:if="{{item.status!=13}}">
+            <br/>起拍价
+          </view>
+          <view class="amount" wx:if="{{item.status!=13}}">
+            {{item.startintPrice? item.startintPrice : '--'}}
+          </view>
+          <!-- <view class="txt">
+            <br/>起拍价
+            <br/> RMB
+          </view> -->
+          <!-- <view class="amount">
+            {{item.startintPrice? item.startintPrice : '--'}}
+          </view> -->
+
+          <view class="book-btn book-btn1" wx:if="{{item.status==9}}">
+            <br/>预约
+            <br/>看样
+          </view>
+        </view>
+        <view class="auction-time" wx:if="{{item.status==13}}">
+          <br/>成交时间 {{item.transactionTime?item.transactionTime:'--'}}
+        </view>
+        <view class="auction-time" wx:else>
+          <br/>开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+        </view>
+        <!-- <view class="auction-time">
+          开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+        </view> -->
+
+      </view>
+
+    </view>
+
+
+    
+    <view wx:if="{{showAllShow}}" class='show_all_btn'>
+      <image class='no_data_icon' src='../../image/wei.png'></image>
+      <view>该地区暂无标的</view>
+      <view class='gray'>请切换到全国项目</view>
+      <view class='switch_all' bindtap='switchAll'>立即切换</view>
+    </view>
+    <view class='nodata' wx:if="{{noData && !showAllShow}}">
+      <image src="../../image/nodata.png"></image>
+      <view>暂无数据</view>
+    </view>
+    
+    
+  </view>
+  <view class='hasMore' wx:if="{{hasMore&&hasMore}}">上拉加载更多</view>
+  <!-- 会员订阅 -->
+  <view class='member_subscription' bindtap="memberSubscription" wx:if="{{!ifSearch}}">
+    <image src='../../image/member_subscription.png'></image>
+  </view>
+  <view class='look_all' wx:if="{{lookAll}}">显示全部</view>
+</view>
+<view wx:else>
+  <image src='../../image/upgrade.png' mode="widthFix" class="upgrade_icon"></image>
+  <view class="upgrade_text">系统升级中，请稍后...</view>
+</view>

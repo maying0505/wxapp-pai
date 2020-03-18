@@ -1,0 +1,46 @@
+<template name="dropMenu1">
+  <view class="drop-menu drop-menu1 {{isPopupShow1?'drop-menu-active':''}}">
+    <view wx:if="{{style === 1}}" class='distinct_str {{isPopupShow1?"distinct_active":""}}' catchtap='menuClick1' data-key="3">
+      {{distinctStr}}
+    </view>
+    <view class="drop-menu-bar" wx:else>
+      <view class='item-bar {{distinctStr?"item-bar-active":""}}' catchtap='menuClick1' data-key="3">
+        <span>{{distinctStr?distinctStr:'所在地'}}</span>
+        <image src="../../image/xiala@2x.png" class="down-icon"></image>
+      </view>
+    </view>
+    
+
+
+    <view class="popup" wx:if="{{isPopupShow1}}" catchtap="maskClick1">
+      <view class="popup-mask"></view>
+      <view class="popup-box slide-down">
+        
+        <view class="drop-menu-list drop-menu-list1">
+          <view class="distinct-list">
+            <scroll-view scroll-into-view="cur{{toViewP}}" style="height: 500rpx;" 
+            class="province-list" scroll-y="true" wx:if="{{provinces}}">
+              <view id="cur{{index}}" class="item {{item==province?'active':''}}" wx:for="{{provinces}}" wx:key="{{index}}" catchtap='chooseProvince' data-province="{{item}}">
+                {{ item }}
+              </view>
+            </scroll-view>
+            <scroll-view scroll-into-view="cur{{toViewC}}" class="city-list" scroll-y="true" wx:if="{{cities}}">
+              <view id="cur{{index}}" class="item  {{item==city?'active':''}}" wx:for="{{cities}}" wx:key="{{index}}" catchtap='chooseCity' data-city="{{item}}">
+                {{ item }}
+              </view>
+            </scroll-view>
+            <scroll-view scroll-into-view="cur{{toViewA}}" class="area-list" scroll-y="true" wx:if="{{areas}}">
+              <view id="cur{{index}}" class="item {{item==area?'active':''}}" wx:for="{{areas}}" wx:key="{{index}}" catchtap='chooseArea' data-area="{{item}}">
+                {{ item }}
+              </view>
+            </scroll-view>
+          </view>
+          <view class='confirm-cancel'>
+            <view class='cancel' catchtap='distinctCancel'>重置</view>
+            <view class='confirm' catchtap='distinctConfirm'>确认</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

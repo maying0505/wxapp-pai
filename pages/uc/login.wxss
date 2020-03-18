@@ -1,0 +1,20 @@
+#uc-login{
+  padding:10rpx 20rpx;
+}
+
+.pai-logo {
+  width: 350rpx;
+  height: 350rpx;
+  display: block;
+  margin: 120rpx auto 50rpx;
+}
+.information{
+  padding:100rpx 40rpx;
+  font-size:30rpx;
+  line-height: 1.5;
+}
+
+.userInfoBtn{
+  background: #1abd98;color:#fff
+}
+

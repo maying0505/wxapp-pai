@@ -1,0 +1,37 @@
+.drop-menu1 .item-bar span:after {
+  border-top: 9rpx solid #fff;
+}
+.drop-menu1 .item-bar span{
+  color: #333;
+}
+.drop-menu1 .drop-menu-bar {
+  height: 50rpx;
+  /* background: #fff; */
+}
+.drop-menu-list1 {
+  padding-top: 50rpx;
+}
+.drop-menu1 .drop-menu-bar:before {
+  background-color: initial;
+}
+.distinct_str{
+  font-size: 26rpx;
+  color: rgb(131, 130, 130);
+  margin-top: 10rpx;
+}
+.distinct_active{
+  color:#fff;
+  background-color:#1abd98;
+  position:fixed;
+  z-index:101;
+  width:100%;
+  margin:0;
+  height:50rpx;
+  line-height:50rpx;
+  text-align:center;
+}
+.down-icon{
+  width: 22rpx;
+  height: 14rpx;
+  margin: 0 12rpx;
+}

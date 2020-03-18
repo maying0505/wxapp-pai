@@ -1,0 +1,3 @@
+<view>
+  <image src="../../image/auction-process.png" mode="widthFix" class="auction-process-img"></image>
+</view>

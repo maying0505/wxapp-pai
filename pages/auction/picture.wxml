@@ -1,0 +1,5 @@
+<view class='pic-list' wx:if="{{imageList.length>0}}">
+  <view class='pic-item' wx:for="{{imageList}}" data-index="{{index}}" bindtap="previewImg" wx:key="{{index}}">
+    <image src="{{prefix}}{{item.waterMarkImage}}" mode="widthFix"></image>
+  </view>
+</view>

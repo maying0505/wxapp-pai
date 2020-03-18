@@ -1,0 +1,10 @@
+.pic-item image{
+  width:100%;
+  /* height:auto; */
+}
+.pic-item {
+  width:100%;
+  /* height:auto; */
+  background:#666;
+  margin-top:10rpx;
+}

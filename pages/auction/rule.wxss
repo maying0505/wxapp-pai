@@ -1,0 +1,28 @@
+.h3{
+  font-size:36rpx;
+  font-weight: 700;
+}
+.p1{
+  font-size:30rpx;
+  margin-top: 20rpx;
+  text-indent: 80rpx;
+}
+
+.p2{
+  font-size:28rpx;
+  line-height: 40rpx;
+  text-indent: 80rpx;
+  margin-top: 20rpx;
+  
+}
+.p3{
+  font-size:30rpx;
+  font-weight: 700;
+  text-align: right;
+  margin-top:40rpx;
+}
+
+.content{
+  padding:30rpx 20rpx 0;
+  color:#666
+}

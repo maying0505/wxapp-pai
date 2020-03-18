@@ -1,0 +1,325 @@
+<view id="auction-detail" wx:if="{{auctionDetail}}">
+  <view>
+    <view class="auction-banner">
+      <video id="myVideo" class='video' src="{{auctionDetail.video}}" enable-danmu controls wx:if="{{auctionDetail.video}}" objectFit></video>
+      <image wx:else src='{{prefix+auctionDetail.cover}}' mode='aspectFill'></image>
+    </view>
+    <view class="auction-detail-1">
+      <image src="../../image/paimaijieshu.png" class="auction-end-icon" wx:if="{{auctionDetail.status==13}}"></image>
+      <view class="auction-number-title">
+        <span class="title">{{auctionDetail?auctionDetail.name:'--'}}</span>
+      </view>
+
+      <view class="auction-price" wx:if="{{auctionDetail.status==13}}">
+        <view class="text">
+          <br/>成交价
+        </view>
+        <view class="price red-color">
+          {{auctionDetail.finalPrice?auctionDetail.finalPrice:"--"}}
+        </view>
+      </view>
+      <view class="auction-price" wx:else>
+        <view class="text">
+          <br/>起拍价
+        </view>
+        <view class="price red-color">
+          {{auctionDetail.startintPrice?auctionDetail.startintPrice:"--"}}
+        </view>
+      </view>
+
+      <view class="auction-time-resource" wx:if="{{auctionDetail.status!=13}}">
+        <view class="time">开拍时间
+          <i class="auction-time-info">{{auctionDetail.auctionTime?auctionDetail.auctionTime:"--"}}</i>
+        </view>
+      </view>
+      <view class="auction-time-resource" wx:else>
+        <view class="time">成交时间
+          <i class="auction-time-info">{{auctionDetail.transactionTime?auctionDetail.transactionTime:"--"}}</i>
+        </view>
+      </view>
+
+      <view class="auction-time-resource">
+       <view class="resource">已有{{auctionDetail.numbers
+?auctionDetail.numbers
+:"0"}}人预约看样 | {{auctionDetail.applyNum
+?auctionDetail.applyNum
+:"0"}}人报名</view>
+      <!-- <view class="resource">已有{{auctionDetail.numbers
+      ?auctionDetail.numbers
+      :"0"}}人预约看样</view> -->
+        <view class="resource text-right">来源 {{auctionDetail.auctionPlatform?auctionDetail.auctionPlatform:"--"}}</view>
+      </view>
+
+      <!-- <view class="book-btn" bindtap="bookClick" wx:if="{{auctionDetail.status==9}}">
+        预约看样
+      </view> -->
+    </view>
+    <view class="auction-end-box" wx:if="{{auctionDetail.status==13}}">
+			<view class="auction-end">
+				<view class="auction-end-left">
+          <image src="../../image/qipaijia@2x.png" class="icon"></image>
+          <view class="auction-end-content">
+          	<view class="text">起拍价</view>
+					  <view class="value">￥{{ auctionDetail.startintPrice ? auctionDetail.startintPrice : '--' }}元</view>
+          </view>
+				
+				</view>
+				<view class="line"></view>
+				<view class="auction-end-right">
+          <image src="../../image/kaipaishijian@2x.png" class="icon"></image>
+          <view class="auction-end-content">
+            <view class="text">开拍时间</view>
+            <view class="value">{{ auctionDetail.auctionTime ? auctionDetail.auctionTime : '--' }}</view>
+          </view>
+				</view>
+			</view>
+		</view>
+
+    <view class="auction-detail-2">
+      <view class="table-cell">
+        <span class="cell-text">评估价</span>
+        <span class="cell-value">￥{{auctionDetail.evaluationPrice?auctionDetail.evaluationPrice:"--"}}元</span>
+      </view>
+      <view class="table-cell">
+        <span class="cell-text">竞价周期</span>
+        <span class="cell-value border-right-none"> {{auctionDetail.biddingCycle?auctionDetail.biddingCycle:"--"}}</span>
+      </view>
+       <view class="table-cell">
+        <span class="cell-text">保证金</span>
+        <span class="cell-value">￥{{auctionDetail.bond?auctionDetail.bond:'--'}}元</span>
+      </view>
+      <view class="table-cell  ">
+        <span class="cell-text">处置方式</span>
+        <span class="cell-value border-right-none">{{auctionDetail.auction==0?'线上':'线下'}}</span>
+      </view>
+      <view class="table-cell border-bottom-none">
+        <span class="cell-text">加价幅度</span>
+        <span class="cell-value">￥{{auctionDetail.price?auctionDetail.price:"--"}}元</span>
+      </view>
+      <view class="table-cell border-right-none border-bottom-none">
+        <span class="cell-text">优先购买权</span>
+        <span class="cell-value border-right-none">{{auctionDetail.preemption ? auctionDetail.preemption : "--"}}</span>
+      </view>
+    </view>
+
+    <view class="location-name" catchtap='openMap' data-lat='{{auctionDetail.latitue}}' data-long="{{auctionDetail.longtitude}}">
+			<image src="../../image/map-bg@2x.png"></image>
+			<view class="text">标的位置</view>
+			<view class="value">{{ auctionDetail.locationName ? auctionDetail.locationName : '--' }}</view>
+		</view>
+    <view class="auction-detail-3">
+      <view class="row" bindtap="seeContent" data-key="5" hover-class="hover-class">
+        <image src='../../image/biaodijieshao.png' class="detail-icon"></image>
+        <view class="text">标的介绍</view>
+        <view class="value"></view>
+        <view class="icon-right iconfont"></view>
+      </view>
+      <!-- <view class="row" hover-class="hover-class">
+        <image src='../../image/biaodiwuzhi.png' class="detail-icon"></image>
+        <view class="text">标的位置</view>
+        <view class="value" catchtap='openMap' data-lat='{{auctionDetail.latitue}}' data-long="{{auctionDetail.longtitude}}">{{auctionDetail.locationName?auctionDetail.locationName:''}}</view> -->
+        <!-- <view class="icon-address iconfont" catchtap='openMap' data-lat='{{auctionDetail.latitude}}' data-long="{{auctionDetail.longtitude}}"></view> -->
+        <!-- <image src="../../image/map-icon.png" class="map-icon"></image>
+      </view> -->
+      <view class="row" hover-class="hover-class">
+        <image src='../../image/chuzhifayuan.png' class="detail-icon"></image>
+        <view class="text">处置单位</view>
+        <view class="value">{{auctionDetail.handleUnit?auctionDetail.handleUnit:'--'}}</view>
+        <view class="iconfont"></view>
+      </view>
+      <view class="row" bindtap="seeContent" data-key="1" hover-class="hover-class">
+        <image src='../../image/paimaigonggao.png' class="detail-icon"></image>
+        <view class="text">公告</view>
+        <view class="value"></view>
+        <view class="icon-right iconfont"></view>
+      </view>
+      <view class="row" bindtap="seeContent" data-key="2" hover-class="hover-class">
+        <image src='../../image/jingmaixuzhi.png' class="detail-icon"></image>
+        <view class="text">须知</view>
+        <view class="value"></view>
+        <view class="icon-right iconfont"></view>
+      </view>
+      <view class="row" bindtap="seeContent" data-key="3" hover-class="hover-class">
+        <image src='../../image/zhongyaotishi.png' class="detail-icon"></image>
+        <view class="text">重要提示</view>
+        <view class="value"> </view>
+        <view class="icon-right iconfont"></view>
+      </view>
+
+      <view class="row" bindtap="seeContent" data-key="4" hover-class="hover-class">
+        <image src='../../image/qitashuoming.png' class="detail-icon"></image>
+        <view class="text">其他说明</view>
+        <view class="value"></view>
+        <view class="icon-right iconfont"></view>
+      </view>
+
+      <view class="row" bindtap="jumpCustomerService" data-key="6" hover-class="hover-class">
+        <image src='../../image/wenda.png' class="detail-icon"></image>
+        <view class="text">客服问答（<text class="aq-number">{{auctionDetail.number ?auctionDetail.number : 0}}</text>）</view>
+        <view class="value">查看全部</view>
+        <view class="icon-right iconfont"></view>
+      </view>
+
+    </view>
+
+
+    <!-- <view class='auction-detail-4'>
+      <view class="title">
+        标的物介绍
+      </view>
+
+      <view class='content' wx:if="{{auctionDetail.baseinfo.type==0}}">
+        <view class='table'>
+          <view class='cell'>标的物名称</view>
+          <view class='cell grid-column-24'>{{auctionDetail.baseinfo.subjectMatterName?auctionDetail.baseinfo.subjectMatterName:'--'}}</view>
+
+          <view class="cell">
+            权证情况
+          </view>
+
+          <view class="cell grid-column-24" style='padding:0'>
+            <view wx:if="{{auctionDetail.detail.warrants.length>0}}" class="view-table">
+              <view wx:for="{{auctionDetail.detail.warrants}}" :key="index" class='view-table-tr'>
+                <view class='view-table-td'>{{item.cardName}}</view>
+                <view class='view-table-td'>{{item.cardNumber}}</view>
+              </view>
+            </view>
+            <view wx:if="{{auctionDetail.detail.warrants.length==0}}">无</view>
+          </view>
+
+
+
+          <view class="cell">被执行人姓名</view>
+          <view class="cell" style="grid-column:2/4">{{auctionDetail.baseinfo.executorName}}</view>
+          <view class="cell">评估鉴定基准日</view>
+          <view class="cell" style="grid-column:2/4">评估鉴定基准日</view>
+          <view class="cell" style="grid-row:5/13">标的现状</view>
+          <view class="cell">房屋用途</view>
+          <view class="cell">{{auctionDetail.detail.purposes}}</view>
+          <view class="cell">土地性质</view>
+          <view class="cell">{{auctionDetail.detail.landUse}}</view>
+          <view class="cell">土地用途</view>
+          <view class="cell">{{auctionDetail.detail.landUse}}</view>
+
+          <view class="cell">是否已腾空</view>
+          <view class="cell">{{auctionDetail.detail.vacate}}</view>
+          <view class="cell">租赁情况</view>
+          <view class="cell">{{auctionDetail.detail.lease}}</view>
+          <view class="cell">经营情况</view>
+          <view class="cell">{{auctionDetail.detail.operating}}</view>
+          <view class="cell">过户情况</view>
+          <view class="cell">{{auctionDetail.detail.transfer}}</view>
+          <view class="cell">钥匙</view>
+          <view class="cell">{{auctionDetail.detail.haveKey}}</view>
+
+          <view class="cell" style="grid-row:13/15">权利限定情况</view>
+          <view class="cell">查封情况</view>
+          <view class="cell">{{auctionDetail.detail.seal}}</view>
+          <view class="cell">抵押情况</view>
+          <view class="cell">{{auctionDetail.detail.mortgage}}</view>
+          <view class="cell">提供的文件</view>
+          <view class="cell grid-column-24">
+            <view wx:for="{{auctionDetail.detail.file}}" style='margin-right:20rpx'>{{item==0?'法院裁定书、 ':item==1?'协助执行通知书 ':'拍卖成交确认书'}}</view>
+          </view>
+          <view class="cell" style="grid-row:16/26">标的物介绍</view>
+          <view class="cell">建筑面积</view>
+          <view class="cell">{{auctionDetail.detail.constructionArea}}</view>
+          <view class="cell">公摊面积</view>
+          <view class="cell">{{auctionDetail.detail.publicArea}}</view>
+          <view class="cell">土地面积</view>
+          <view class="cell">{{auctionDetail.detail.landArea}}</view>
+          <view class="cell">产品年限</view>
+          <view class="cell">{{auctionDetail.detail.buildingAge}}</view>
+          <view class="cell">装修程度</view>
+          <view class="cell">{{auctionDetail.detail.decoration}}</view>
+          <view class="cell">户型</view>
+          <view class="cell">{{auctionDetail.detail.room}}{{auctionDetail.detail.hall}}{{auctionDetail.detail.kitchen}}{{auctionDetail.detail.guard}}{{auctionDetail.detail.balcony}} </view>
+
+          <view class="cell">楼层</view>
+          <view class="cell">{{auctionDetail.detail.floor+auctionDetail.detail.allFloor}} </view>
+          <view class="cell">朝向</view>
+          <view class="cell">{{auctionDetail.detail.oriented}}</view>
+          <view class="cell">小区配套</view>
+          <view class="cell">{{auctionDetail.detail.supportingFacilities}}</view>
+          <view class="cell">周边环境</view>
+          <view class="cell"></view>
+
+          <view class="cell" style="grid-row:26/30">
+            标的物估值
+          </view>
+          <view class="cell">评估价</view>
+          <view class="cell">11</view>
+          <view class="cell">税费情况</view>
+          <view class="cell">
+            {{auctionDetail.detail.deedTax}} {{auctionDetail.detail.printingTax}} {{auctionDetail.detail.transactionTax}}
+          </view>
+          <view class="cell">其他费用情况</view>
+          <view class="cell">{{auctionDetail.detail.otherFee}}</view>
+        </view>
+      </view>
+
+      <view class='content' wx:if="{{auctionDetail.baseinfo.type==1}}">
+        <view class='table'>
+          <view class='cell'>标的物名称</view>
+          <view class='cell grid-column-24'>{{auctionDetail.baseinfo.subjectMatterName?auctionDetail.baseinfo.subjectMatterName:'--'}}</view>
+          <view class='cell'></view>
+        </view>
+      </view>
+
+      <view class='content' wx:if="{{auctionDetail.baseinfo.type==2}}">
+        <view class='table'>
+
+        </view>
+      </view>
+    </view> -->
+
+    <view class="auction-detail-5">
+      <!-- <view class='title' wx:if="{{auctionDetail.img360}}">全景看样</view>
+      <image class="panorama-img" src="{{prefix360}}img360.png" data-url="{{auctionDetail.img360}}" mode="aspectFill" catchtap='img360Click' wx:if="{{auctionDetail.img360}}"></image> -->
+      <view class="panorama-img" catchtap='img360Click' wx:if="{{auctionDetail.img360}}" data-url="{{auctionDetail.img360}}">
+        <image src="../../image/quanjing@2x.png"></image>
+      </view>
+      <!-- <video id="myVideo" class='video' src="{{auctionDetail.video}}" enable-danmu danmu-btn controls wx:if="{{auctionDetail.video}}" objectFit></video> -->
+      <view class='title' wx:if="{{auctionDetail.files.length>0}}">标的图片</view>
+      <view class='pic-list' wx:if="{{auctionDetail.files.length>0}}">
+        <view class='pic-item' wx:for="{{auctionDetail.files}}" data-index="{{index}}" bindtap="previewImg" wx:key="{{index}}">
+          <image src="{{prefix}}{{item.thumbFileName}}" mode="aspectFill"></image>
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+
+
+  <view class="book-btn-bottom">
+    <view class="phone" bindtap='call' data-phone="4000159899">
+      <image src="../../image/jingpaizixun@2x.png" class="phone-icon"></image>
+      <view>一键咨询</view>
+    </view>
+    <view class="btn" catchtap="bookClick">
+      <image src='../../image/yuyuekanyang@2x.png' class="eye-icon"></image> {{auctionDetail.status==9?'预约看样':auctionDetail.statusStr}}
+      </view>
+  </view>
+
+
+
+
+
+</view>
+
+
+<!-- <view id="auction-detail" wx:if="{{assetId}}">
+  <web-view src="{{detailUrl}}"></web-view>
+</view>
+
+<view id="auction-detail" wx:if="{{!assetId}}">
+  <view>错误</view>
+</view> -->

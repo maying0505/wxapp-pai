@@ -1,0 +1,190 @@
+
+.dialog-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dialog {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1000;
+  max-width: 100%;
+  max-height: 100%;
+  width: 88%;
+}
+
+.dialog-header {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #333;
+  border-radius: 5px 5px 0 0;
+  font-size: 30rpx;
+  background: #cdcdcd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-header image{
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 10rpx;
+}
+
+.dialog-body {
+  background: #fff;
+  height: 500rpx;
+  overflow: scroll;
+}
+
+.dialog-footer {
+  height: 80rpx;
+  background: linear-gradient(to right, #3eb675, #07c1ab);
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 0 0 5px 5px;
+}
+
+.dialog-footer button{
+  background: transparent;
+  color:#fff;
+  border:0 none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.dialog .input-item {
+  display: flex;
+  height: 50rpx;
+  padding: 25rpx 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.dialog input {
+  flex: 1;
+  font-size: 30rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  outline: 0 none;
+  color: #333;
+  padding-left: 30rpx;
+}
+
+.dialog .see-rule {
+  font-size: 28rpx;
+  color: #888;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.dialog .switch {
+  height: 50rpx;
+}
+
+.dialog-close {
+  color: #fff;
+  background: transparent;
+  height: 82rpx;
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.dialog-close .close {
+  width: 78rpx;
+  height: 78rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.sm-code-btn {
+  width: 250rpx;
+  color: #c0c0c0;
+  font-size: 28rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: left;
+  padding-left: 20rpx;
+}
+
+
+
+.fade-in{
+  animation: fade-in ease-in .2s;
+}
+.fade-out{
+  animation: fade-out ease-out .2s
+}
+
+@keyframes fade-in {
+  0% { 
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% { 
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.select{
+  position: relative;
+  flex:1;
+  height:100%;
+  padding: 0 30rpx ;
+  font-size:30rpx;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+.select .val{
+  font-size:30rpx;
+  color: #888;
+}
+
+.options{
+  position: absolute;
+  left:0;
+  top:0rpx;
+  right:0;
+  z-index:5;
+  background: #fff;
+  box-shadow:0 0 5px  #ccc
+}
+.options .option{
+  padding:10rpx 30rpx;
+  border-bottom: 1px solid #ccc;
+}
+.select .item{
+  display: flex;
+  position: relative;
+  flex: 1;
+}
+.select .item image{
+  width: 26rpx;
+  height: 14rpx;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}

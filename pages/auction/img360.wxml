@@ -1,0 +1,3 @@
+<view>
+  <web-view src="{{img360url}}"></web-view>
+</view>

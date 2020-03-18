@@ -1,0 +1,101 @@
+<template name="dropMenu">
+  <view class="drop-menu {{isPopupShow?'drop-menu-active':''}}">
+    <view class="drop-menu-bar">
+      <view class='item-bar {{sortStr?"item-bar-active":""}}' catchtap='menuClick' data-key="1">
+        <span>{{sortStr?sortStr:'排序'}}</span>
+      </view>
+      <view class='item-bar {{typeStr?"item-bar-active":""}}' catchtap='menuClick' data-key="2">
+        <span>{{typeStr?typeStr:'类型'}}</span>
+      </view>
+      <view class='item-bar' catchtap='menuClick' data-key="4">
+        <span>更多</span>
+      </view>
+    </view>
+
+
+    <view class="popup" wx:if="{{isPopupShow}}" catchtap="maskClick">
+      <view class="popup-mask"></view>
+      <view class="popup-box slide-down">
+        <view class="drop-menu-list" wx:if="{{activeMenuIndex==1}}">
+          <view class="row-list">
+            <view class="row-item {{params.sort==0||params.sort==-1?'row-item-active':''}}" bindtap="sortItemClick" data-key="-1">
+              <view class="txt">默认排序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==1?'row-item-active':''}}" bindtap="sortItemClick" data-key="1">
+              <view class="txt">价格升序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==2?'row-item-active':''}}" bindtap="sortItemClick" data-key="2">
+              <view class="txt">价格降序</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.sort==3?'row-item-active':''}}" bindtap="sortItemClick" data-key="3">
+              <view class="txt">最新发布</view>
+              <view class="icon"></view>
+            </view>
+          </view>
+        </view>
+        <view class="drop-menu-list" wx:if="{{activeMenuIndex==2}}">
+          <view class="row-list">
+            <view class="row-item {{params.type==-1?'row-item-active':''}}" bindtap="typeItemClick" data-key="0">
+              <view class="txt">全部</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.type==0?'row-item-active':''}}" bindtap="typeItemClick" data-key="1">
+              <view class="txt">房产</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.type==2?'row-item-active':''}}" bindtap="typeItemClick" data-key="2">
+              <view class="txt">土地</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.type==1?'row-item-active':''}}" bindtap="typeItemClick" data-key="3">
+              <view class="txt">机动车</view>
+              <view class="icon"></view>
+            </view>
+            <view class="row-item {{params.type==3?'row-item-active':''}}" bindtap="typeItemClick" data-key="4">
+              <view class="txt">其他</view>
+              <view class="icon"></view>
+            </view>
+
+          </view>
+        </view>
+
+        <view class="drop-menu-list" wx:if="{{activeMenuIndex==4}}">
+          <view class='custom-list'>
+            <view class='status-list'>
+              <view class='status-text'>拍卖状态</view>
+              <view class='tag-list'>
+                <view class='tag {{params.status==-1?"active":""}}' data-status="-1" catchtap='statusClick'>不限</view>
+                <view class='tag {{params.status==11?"active":""}}' data-status="11" catchtap='statusClick'>即将开始</view>
+                <view class='tag {{params.status==13?"active":""}}' data-status="13" catchtap='statusClick'>已结束</view>
+                <view class='tag {{params.status==14?"active":""}}' data-status="14" catchtap='statusClick'>流拍</view>
+                <view class='tag {{params.status==15?"active":""}}' data-status="15" catchtap='statusClick'>终止</view>
+                <view class='tag {{params.status==16?"active":""}}' data-status="16" catchtap='statusClick'>撤回</view>
+              </view>
+            </view>
+
+            <view class='time-list'>
+              <view class='time-text'>拍卖时间</view>
+              <view class='tag-list'>
+                <view class='tag {{params.time==-1?"active":""}}' data-time="-1" catchtap='timeClick'>不限</view>
+                <view class='tag {{params.time==0?"active":""}}' data-time="0" catchtap='timeClick'>今天</view>
+                <view class='tag {{params.time==3?"active":""}}' data-time="3" catchtap='timeClick'>三天内</view>
+                <view class='tag {{params.time==7?"active":""}}' data-time="7" catchtap='timeClick'>七天内</view>
+              </view>
+            </view>
+
+          </view>
+          <view class='confirm-cancel'>
+            <view class='cancel' catchtap='customCancel'>重置</view>
+            <view class='confirm' catchtap='customConfirm'>确认</view>
+          </view>
+
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+</template>

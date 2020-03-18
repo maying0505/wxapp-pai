@@ -1,0 +1,118 @@
+<import src="../../template/drop-menu.wxml" />
+<import src="../../template/drop-menu1.wxml" />
+<import src="../../template/status-filter.wxml" />
+<view id="auctions">
+  <view class="search-bar">
+    <view class='area_filter' wx:if="{{!ifSearch}}">
+     <picker  class="address-box" mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
+				<view class="address-input">{{multiArray[1][multiIndex[1]].name ? multiArray[1][multiIndex[1]].name : '所在地'}} <image src="../../image/down-white.png"></image></view>
+        
+			</picker>
+      <!-- <template is="dropMenu1" data="{{provinces,cities,areas,isPopupShow1,province,city,area,sortStr,typeStr,distinctStr,sort,type,params,toViewP,toViewA,toViewC}}"></template> -->
+    </view>
+     <!-- 下拉框 -->
+     <view class='list-msg2' wx:if="{{ifSearch}}">
+        <!-- <text>{{tihuoWay}}</text> -->
+        <picker bindchange="bindPickerSearchType" value="{{searchTypeIndex}}" range="{{searchTypeList}}" range-key="text"> 
+          <view class="picker">
+            {{tihuoWay}}
+          </view>
+        </picker>
+        <image src='../../image/down-white.png'></image>
+    </view>
+    <!-- <view class='list-msg2' bindtap='bindShowMsg' wx:if="{{ifSearch}}">
+        <text>{{tihuoWay}}</text>
+        <image src='../../image/xiala@2x.png'></image>
+    </view> -->
+    <!-- <view class='mask' bindtap="cancelSelect"></view> -->
+    <!-- <view class="select_box" wx:if="{{select&&ifSearch}}">
+        <view class="select_one" bindtap="mySelect" data-name="标的" data-id="1">标的</view>
+        <view class="select_one" bindtap="mySelect" data-name="法院" data-id="2">法院</view>
+    </view> -->
+    <!-- 下拉框 -->
+    <view class="search">
+      <view class="search-append">
+         <i class="iconfont icon-search"></i>
+      </view>
+      <!-- <input type="text" placeholder="搜索标的物的名称，标的物的编号" bindinput='searchInput' placeholder-class="search-input-placeholder" /> -->
+      <input placeholder='请输入标的编号名称或法院' name="search" type='text' value='{{searchValue}}' confirm-type="search" bindconfirm="bindconfirm"  bindfocus='bindfocus' bindinput='searchInput' disabled="{{searchDisabled}}"></input>
+      <icon type="clear" size="12" wx:if="{{ifSearchContent}}" bindtap='searchValueCancel'/>
+    </view>
+    <view class="search_cancel" wx:if="{{ifSearch}}" bindtap='searchCancel'>取消</view>
+  </view>
+  <!-- <view class="filter">
+      <template is="dropMenu" data="{{activeMenuIndex,provinces,cities,areas,isPopupShow,province,city,area,sortStr,typeStr,distinctStr,sort,type,params}}"></template>
+  </view> -->
+    <view class="filter filter1" wx:if="{{statusFilterShow}}">
+    <template is="statusFilter" data="{{scrolls,curScrollItem,isPopupShow,params,sortStr,sortB,sortList}}"></template>
+  </view>
+
+
+  <view class="auction-list">
+       <view class="auction-item" bindtap='detail' wx:for="{{ifSearch ? searchList: auctionList}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <view class="auction-image">
+        <image src="{{item.cover?prefix:''}}{{item.cover?item.cover:'../../image/default-cover.png'}}" lazy-load="true" mode="aspectFit" binderror='imgLoadError' />
+        <view class="auction-status auction-status-{{item.status}}" wx:if="{{item.statusStr}}">
+
+
+          {{item.statusStr}}
+
+
+        </view>
+      </view>
+      <view class="auction-info">
+        <view class="auction-title">{{item.name?item.name:'--'}}</view>
+        <view class="auction-amount">
+          <view class="txt"wx:if="{{item.status==13}}">
+            <br/>成交价
+          </view>
+          <view class="amount"wx:if="{{item.status==13}}">
+            {{item.finalPrice?item.finalPrice: '--'}}
+          </view>
+          <view class="txt" wx:if="{{item.status!=13}}">
+            <br/>起拍价
+          </view>
+          <view class="amount" wx:if="{{item.status!=13}}">
+            {{item.startintPrice? item.startintPrice : '--'}}
+          </view>
+          <!-- <view class="txt">
+            <br/>起拍价
+            <br/> RMB
+          </view>
+          <view class="amount">
+            {{item.startintPrice? item.startintPrice : '--'}}
+          </view> -->
+
+          <view class="book-btn" wx:if="{{item.status==9}}">
+            <br/>预约
+            <br/>看样
+          </view>
+        </view>
+        <view class="auction-time" wx:if="{{item.status==13}}">
+          <br/>成交时间 {{item.transactionTime?item.transactionTime:'--'}}
+        </view>
+        <view class="auction-time" wx:else>
+          <br/>开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+        </view>
+        <!-- <view class="auction-time">
+          开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+        </view> -->
+
+      </view>
+
+    </view>
+
+   <view class='nodata' wx:if="{{auctionList.length==0&&!ifSearch}}">
+      <image src="../../image/nodata.png"></image>
+      <view>暂无数据</view>
+    </view>
+    <view class='nodata' wx:if="{{searchList.length==0&&ifSearch&&params.assetTitle}}">
+      <image src="../../image/nodata.png"></image>
+      <view>暂无数据</view>
+    </view>
+
+  </view>
+  <view class='hasMore' wx:if="{{hasMore}}">上拉加载更多</view>
+
+
+</view>

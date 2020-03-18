@@ -1,0 +1,62 @@
+<view class='member_subscription'>
+  <view class='member_subscription_m'>
+    <view class='m_s_detal'>
+      <view>房产{{subscribeInfo.cycle === 1 ? '周报' : '半月报'}}</view>
+      <view class='m_s_c'>{{subscribeInfo.adress}} | 价格：{{subscribeInfo.price}} | 状态：{{subscribeInfo.status}}</view>
+    </view>
+  </view>
+  
+  <view wx:for="{{auctionList}}" wx:for-item="cell" wx:key="{{key}}">
+    <view class='subscribeTime'>{{cell.subscribeDate}}</view>
+    <view class="auction-list">
+      <view class="auction-item" bindtap='detail' wx:for="{{cell.assetHouse}}" data-id="{{item.id}}" wx:for-item="item" wx:key="{{index}}" >
+        <view class="auction-image">
+          <image src="{{item.cover?prefix:''}}{{item.cover?item.cover:'../../image/default-cover.png'}}" lazy-load="true" mode="aspectFit" binderror='imgLoadError' />
+          <view class="auction-status auction-status-{{item.status}}" wx:if="{{item.statusStr}}">
+            {{item.statusStr}}
+          </view>
+        </view>
+        <view class="auction-info">
+          <view class="auction-title">{{item.name?item.name:'--'}}</view>
+          <view class="auction-amount">
+            <view class="txt"wx:if="{{item.status==13}}">
+              <br/>成交价
+            </view>
+            <view class="amount"wx:if="{{item.status==13}}">
+              {{item.finalPrice?item.finalPrice: '--'}}
+            </view>
+            <view class="txt" wx:if="{{item.status!=13}}">
+              <br/>起拍价
+            </view>
+            <view class="amount" wx:if="{{item.status!=13}}">
+              {{item.startintPrice? item.startintPrice : '--'}}
+            </view>
+            <!-- <view class="txt">
+              <br/>起拍价
+              <br/> RMB
+            </view>
+            <view class="amount">
+              {{item.startintPrice? item.startintPrice : '--'}}
+            </view> -->
+
+            <view class="book-btn book-btn1" wx:if="{{item.status==9}}">
+              <br/>预约
+              <br/>看样
+            </view>
+          </view>
+          <view class="auction-time" wx:if="{{item.status==13}}">
+            <br/>成交时间 {{item.transactionTime?item.transactionTime:'--'}}
+          </view>
+          <view class="auction-time" wx:else>
+            <br/>开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+          </view>
+          <!-- <view class="auction-time">
+            开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+          </view> -->
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <view class='hasMore' wx:if="{{hasMore&&hasMore}}">上拉加载更多</view>
+</view>

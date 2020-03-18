@@ -1,0 +1,97 @@
+page{
+  background: #f0f0f0;
+}
+
+.message-list{
+  padding: 25rpx;
+}
+.message-item {
+  border-radius: 16rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+.title{
+  font-size:28rpx;
+  line-height: 48rpx;
+  height: 48rpx;
+  color:#333;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.notice-icon {
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 20rpx;
+}
+.title text{
+  display: inline-block;
+    overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+
+.content{
+  margin-left:50rpx;
+  font-size:24rpx;
+  color:#666;
+  padding: 0 20rpx 20rpx 20rpx
+}
+
+.row{
+  /* height: 36rpx; */
+  line-height: 36rpx;
+  /* overflow: hidden; */
+  text-overflow:ellipsis
+}
+
+.icon-right{
+  float: right;
+  margin-right: 20rpx;
+  width:30rpx;
+  height: 30rpx;
+
+}
+.detail{
+  background: #d9d9d9;
+  border-radius: 0 0 10rpx 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left:50rpx;
+  color:#333;
+}
+
+
+.nodata{
+  height: 50vh;
+  background: #fff;
+  text-align: center;
+}
+.nodata image{
+  width: 331rpx;
+  height: 184rpx;
+  margin-top: 70rpx;
+}
+.nodata view{
+  color: #666;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+.open-detail{
+		padding: 20rpx;
+		border-radius: 0 0 16rpx 16rpx;
+		background: #E5E5E5;
+    display: flex;
+    align-items: center;
+}
+.open-detail view{
+  font-size: 28rpx;
+  flex: 1
+}
+.open-detail image{
+    width: 14rpx;
+    height: 28rpx;
+}

@@ -1,0 +1,14 @@
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<view id="auction-article">
+  <view class="content" wx:if="{{!articleUrl}}">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+
+   <view class="content" wx:if="{{articleUrl}}">
+    <web-view src="{{articleUrl}}"></web-view>
+  </view>
+</view>
+
+
+
+

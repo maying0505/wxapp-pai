@@ -1,0 +1,21 @@
+<view class='message-list'>
+
+  <view class="message-item" wx:for="{{noticeList}}" wx:key="index" bindtap="goDetail" data-id="{{item.assetId}}">
+    <view class='title'>
+     <image src="../../image/xiaoxi@2x.png" class='notice-icon'></image>
+     <text>通知：{{item.title}}</text></view>
+    <view class='content'>
+      <view class='row' wx:for="{{item.content}}">
+        {{item.keyword}}：{{item.content}}
+      </view>
+    </view>
+    <view class="open-detail">
+      <view>查看详情</view>
+			<image src="../../image/youjiantou@2x.png"></image>	
+		</view>
+  </view>
+  <view class='nodata' wx:if="{{noticeList.length==0}}">
+    <image src="../../image/nodata.png"></image>
+    <view>暂无数据</view>
+  </view>
+</view>

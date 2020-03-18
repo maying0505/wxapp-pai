@@ -1,0 +1,6 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "标的物详情",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+}

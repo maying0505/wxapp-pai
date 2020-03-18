@@ -1,0 +1,44 @@
+<view id="bookList">
+  <view class="auction-list">
+    <view class="auction-item auction-item-{{item.status}}" bindtap='detail' wx:for="{{auctionList}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <view class="auction-info">
+        <view class="auction-image">
+          <image src="{{item.cover?prefix:''}}{{item.cover?item.cover:'../../image/default-cover.png'}}" lazy-load="true" mode="aspectFill"/>
+          <view class="auction-status auction-status-{{item.status}}" wx:if="{{item.statusStr}}">
+            {{item.statusStr}}
+          </view>
+        </view>
+        <view class='auction-detail'>
+          <view class="auction-title">{{item.name?item.name:'--'}}</view>
+          <view class="auction-amount">
+            <view class="txt">
+              起拍价
+            </view>
+            <view class="amount">
+              {{item.startintPrice}}
+            </view>
+             <view class="book-btn" wx:if="{{item.canCheckin}}" catchtap='checkin' data-assetid='{{item.id}}' data-inquestdateid='{{item.inquestDateId?item.inquestDateId:""}}'>
+            <br/>点击
+            <br/>签到
+          </view>
+          </view>
+          <view class="auction-time">
+            <br/>开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+          </view>
+          <view class="auction-time">
+            <br/>看样时间 {{item.seeingTime?item.seeingTime:'--'}}
+          </view>
+        </view>
+      </view>
+      <view class='bookcode'>
+        <image src="../../image/yuyuehaoma@2x.png"></image>
+        预约号码：{{item.code}}
+      </view>
+
+    </view>
+    <view class='nodata' wx:if="{{auctionList.length==0}}">
+      <image src="../../image/nodata.png"></image>
+      <view>暂无数据</view>
+    </view>
+  </view>
+</view>

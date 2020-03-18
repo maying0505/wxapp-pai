@@ -1,0 +1,56 @@
+<import src="../../template/drop-menu1.wxml" />
+<view class='member_subscription'>
+  <view class='member_subscription_m'>
+    <view class='m_s_m'>
+      <view>推送周期</view>
+      <view class='push_cycle m_s_a'>
+        <view class='{{curPushCycle === item.id ? "active_m" : ""}}'  wx:for="{{pushCycleList}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='pushCycleClick'>{{item.name}}</view>
+      </view>
+    </view>
+    <view class='m_s_m'>
+      <view>所在地</view>
+      <view class=''>
+        <!-- <view class='province'>云南</view>
+        <view class='city'>昆明</view>
+        <view class='area'>五华区</view> -->
+        <view class='area_filter' wx:if="{{!ifSearch}}">
+        <picker  class="address-box" mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
+				<view class="address-input">{{multiArray[0][multiIndex[0]].name ? multiArray[0][multiIndex[0]].name + ' ' + multiArray[1][multiIndex[1]].name + ' ' + multiArray[2][multiIndex[2]].name : '所在地'}} </view>
+        
+			</picker>
+          <!-- <template is="dropMenu1" data="{{provinces,cities,areas,isPopupShow1,province,city,area,sortStr,typeStr,distinctStr,sort,type,params,toViewP,toViewA,toViewC,style}}"></template> -->
+        </view>
+      </view>
+    </view>
+    <view class='m_s_m'>
+      <view>价格区间</view>
+      <view class='m_s_a price_interval'>
+        <input name="priceMin" type="number" bindinput='startPriceInput'/> 
+        <text>~</text>
+        <input name="priceMax" type="number" bindinput='endPriceInput'/>
+        <text>万元</text>
+      </view>
+    </view>
+    <view class='m_s_m'>
+      <view>拍卖状态</view>
+      <view class='push_cycle m_s_a'>
+        <view class='{{curStatus === item.id ? "active_m" : ""}}'  wx:for="{{statusList}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='statusClick'>{{item.name}}</view>
+      </view>
+    </view>
+    <view class='m_s_m'>
+      <view>姓名</view>
+      <view class='name_b m_s_a'>
+          <input name="name" type="text" bindinput='nameInput'/>
+      </view>
+    </view>
+    <view class='m_s_m'>
+      <view>电话号码</view>
+      <view class='name_b m_s_a'>
+          <input name="mobile" type="number" bindinput='phoneInput'/>
+      </view>
+    </view>
+  </view>
+  <view class='add_m_s' bindtap='addMemberSubscription'>
+    <view class='add_m_s_b'>添加订阅</view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<view class='table-wrapper'>
+  <view class='row'>
+    <text class="text">标的物名称</text>
+    <view class='column2-wrapper'>
+      <view class='column-value'>测试</view>
+    </view>
+  </view>
+
+  <view class='row'>
+    <text class="text">权证情况</text>
+    <view class='column2-wrapper'>
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+
+
+    <view class='row'>
+    <text class="text">权证情况</text>
+    <view class='column2-wrapper'>
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+      <view class='column2'>
+        <text>林权证</text>
+        <view class='column3-wrapper'>
+          <view class='column-value'>111</view>
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+</view>

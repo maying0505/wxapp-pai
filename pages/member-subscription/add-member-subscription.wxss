@@ -1,0 +1,50 @@
+@import "../../template/drop-menu.wxss";
+@import "../../template/drop-menu1.wxss";
+@import "index.wxss";
+.member_subscription_m{
+  display: inherit;
+}
+.m_s_m{
+  margin-bottom: 28rpx;
+}
+.m_s_a{
+  font-size: 26rpx;
+  color: rgb(131, 130, 130);
+  display: flex;
+  margin-top: 15rpx;
+}
+.m_s_a view{
+  text-align: center;
+  margin-right: 28rpx;
+}
+.push_cycle view {
+  border:1px solid rgb(221, 221, 221);
+  padding:8rpx 30rpx;
+  border-radius:10rpx;
+}
+.price_interval input {
+  width:100rpx;
+  border-radius:10rpx;
+  border:1px solid rgb(221, 221, 221);
+  padding:0 10rpx;
+}
+.price_interval text{
+  margin: 10rpx;
+}
+.name_b input {
+  width:100%;
+  border-radius:10rpx;
+  border:1px solid rgb(221, 221, 221);
+  padding:0 10rpx;
+}
+.active_m{
+  background: linear-gradient(to right, #3eb675, #07c1ab);
+  border:1px solid #03c2af;
+  color: #fff;
+}
+
+.address-box .address-input {
+  font-size: 28rpx;
+  color: rgb(131, 130, 130);
+  margin-top: 10rpx;
+}

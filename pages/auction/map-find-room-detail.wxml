@@ -1,0 +1,61 @@
+<import src="../../template/drop-menu1.wxml" />
+<view class="map_find_room {{ifSearch?'map_find_room1':''}}">
+  <view class="search-bar">
+    <view class='cur-addr'>
+      <!-- <image src='../../image/map-icon.png'></image> -->
+      <view class='area_filter'>
+        <!-- <template is="dropMenu1" data="{{provinces,cities,areas,isPopupShow1,province,city,area,distinctStr,toViewP,toViewA,toViewC}}"></template> -->
+         <picker  class="address-box" mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
+				<view class="address-input">{{multiArray[1][multiIndex[1]].name ? multiArray[1][multiIndex[1]].name : '所在地'}} <image src="../../image/xiala@2x.png"></image></view>
+        
+			</picker>
+      </view>
+    </view>
+    <view class="search">
+      <i class="iconfont icon-search"></i>
+      <input placeholder='请输入关键字/房源' name="search" type='text' confirm-type="search" bindconfirm="bindconfirm" value="{{keyword}}"></input>
+    </view>
+  </view>
+    
+  <map id="myMap" markers="{{markers}}" style="width:100%;height:100%;" latitude="{{latitude}}" longitude="{{longitude}}" bindmarkertap="markertap" bindcallouttap="markertap" bindregionchange="bindregionchange"  scale='{{isDetail ? 14 : 12}}' show-location>
+  </map>
+
+</view>
+<view class="auction-list" wx:if="{{ifSearch}}">
+  <view class="auction-item" bindtap='detail' wx:for="{{items}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <view class="auction-image">
+      <image src="{{item.cover?prefix:''}}{{item.cover?item.cover:'../../image/default-cover.png'}}" lazy-load="true" mode="aspectFit" binderror='imgLoadError' />
+      <view class="auction-status auction-status-{{item.status}}" wx:if="{{item.statusStr}}">
+        {{item.statusStr}}
+      </view>
+    </view>
+    <view class="auction-info">
+      <view class="auction-title">{{item.name?item.name:'--'}}</view>
+      <view class="auction-amount">
+        <view class="txt" wx:if="{{item.status==13}}">
+          <br/>成交价
+        </view>
+        <view class="amount" wx:if="{{item.status==13}}">
+          {{item.finalPrice?item.finalPrice: '--'}}
+        </view>
+        <view class="txt" wx:if="{{item.status!=13}}">
+          <br/>起拍价
+        </view>
+        <view class="amount" wx:if="{{item.status!=13}}">
+          {{item.startintPrice? item.startintPrice : '--'}}
+        </view>
+
+        <view class="book-btn" wx:if="{{item.status==9}}">
+          <br/>预约
+          <br/>看样
+        </view>
+      </view>
+      <view class="auction-time" wx:if="{{item.status==13}}">
+        <br/>成交时间 {{item.transactionTime?item.transactionTime:'--'}}
+      </view>
+      <view class="auction-time" wx:else>
+        <br/>开拍时间 {{item.auctionTime?item.auctionTime:'--'}}
+      </view>
+    </view>
+  </view>
+</view>
